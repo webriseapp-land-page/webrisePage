@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="WebRise – שיר ודורין. סוכנות דפי נחיתה פרימיום שיוצרת עיצובים מותאמים אישית שממירים." />
+  <title>WebRise – שיר ודורין | דפי נחיתה פרימיום</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader" role="status" aria-label="טוען">
+  <canvas id="loaderCanvas"></canvas>
+  <div class="loader__content">
+    <div class="loader__logo"><span class="lw">Web</span><span class="lr">Rise</span></div>
+    <div class="loader__names">הדף שלכם. הסיפור שלכם. התוצאות שלכם.</div>
+    <div class="loader__track"><div class="loader__fill" id="loaderFill"></div></div>
+    <div class="loader__pct" id="loaderPct">0%</div>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-f" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#hero" class="nav__logo">Web<span>Rise</span></a>
+    <nav aria-label="ניווט ראשי">
+      <ul class="nav__links">
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#pricing">מחירים</a></li>
+        <li><a href="#portfolio">עבודות</a></li>
+        <li><a href="#testimonials">לקוחות</a></li>
+        <li><a href="#contact" class="nav__cta">צור קשר</a></li>
+      </ul>
+    </nav>
+    <button class="nav__burger" id="burgerBtn" aria-label="תפריט" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mob-menu" id="mobMenu" aria-hidden="true">
+    <ul>
+      <li><a href="#about">אודות</a></li>
+      <li><a href="#pricing">מחירים</a></li>
+      <li><a href="#portfolio">עבודות</a></li>
+      <li><a href="#testimonials">לקוחות</a></li>
+      <li><a href="#contact">צור קשר</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="content">
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero__orb h-orb1"></div>
+    <div class="hero__orb h-orb2"></div>
+    <div class="hero__orb h-orb3"></div>
+    <div class="hero__grid-overlay"></div>
+  </div>
+
+  <!-- Scrolling marquee top strip -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>דפי נחיתה פרימיום</span><em>✦</em>
+      <span>עיצוב ממיר</span><em>✦</em>
+      <span>חווית משתמש מנצחת</span><em>✦</em>
+      <span>אסטרטגיה + יצירתיות</span><em>✦</em>
+      <span>דפי נחיתה פרימיום</span><em>✦</em>
+      <span>עיצוב ממיר</span><em>✦</em>
+      <span>חווית משתמש מנצחת</span><em>✦</em>
+      <span>אסטרטגיה + יצירתיות</span><em>✦</em>
+    </div>
+  </div>
+
+  <div class="container hero__inner">
+    <!-- LEFT: text -->
+    <div class="hero__text">
+      <span class="hero__eyebrow" aria-label="מפתחות דפי נחיתה">מקוד לעסק. מחלום לתוצאה.</span>
+      <div class="hero__ghost-sub" aria-hidden="true">בניית דפי נחיתה לעסקים</div>
+      <h1 class="hero__h1" id="heroTitle">
+        <span class="hl hl1">הדף שלכם הוא</span>
+        <span class="hl hl2">הרושם הראשון.</span>
+        <span class="hl hl3 accent">תגרמו לו להעביר</span>
+        <span class="hl hl4 accent">את המסר הנכון.</span>
+      </h1>
+      <p class="hero__sub">דפי נחיתה מותאמים אישית שמספרים את הסיפור שלכם, מושכים לקוחות נכונים ומייצרים תוצאות אמיתיות.</p>
+      <div class="hero__btns">
+        <a href="https://wa.me/972503223622" class="btn btn--accent btn--glow" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          רוצה דף נחיתה? דברי איתנו
+        </a>
+        <a href="#portfolio" class="btn btn--outline">לתיק העבודות ↓</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <strong><span class="cnt" data-to="100">0</span><span class="hero__stat-suffix">%</span></strong>
+          <span>לקוחות מרוצים</span>
+        </div>
+        <div class="hero__stat-sep" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <strong><span class="cnt" data-to="7">0</span><span class="hero__stat-suffix"> ימים</span></strong>
+          <span>זמן אספקה ממוצע</span>
+        </div>
+        <div class="hero__stat-sep" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <strong><span class="cnt" data-to="24">0</span><span class="hero__stat-suffix">h</span></strong>
+          <span>זמן מענה מקסימלי</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero__scroll-hint" aria-hidden="true">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>גללו</span>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="about section" id="about">
+  <div class="container about__wrap">
+    <!-- Two photos premium layout -->
+    <div class="about__photos">
+      <div class="about__duo">
+        <div class="about__duo-card about__duo-card--1">
+          <img src="images/dorin.jpg" alt="דורין, מייסדת WebRise" />
+          <div class="about__duo-overlay" aria-hidden="true"></div>
+          <div class="about__duo-info">
+            <span class="about__duo-name">דורין</span>
+            <span class="about__duo-role">עיצוב · אסטרטגיה · פיתוח</span>
+          </div>
+        </div>
+        <div class="about__duo-card about__duo-card--2">
+          <img src="images/shir.jpg" alt="שיר, מייסדת WebRise" />
+          <div class="about__duo-overlay" aria-hidden="true"></div>
+          <div class="about__duo-info">
+            <span class="about__duo-name">שיר</span>
+            <span class="about__duo-role">עיצוב · אסטרטגיה · פיתוח</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Text -->
+    <div class="about__txt">
+      <p class="sec-label">אודות</p>
+      <h2 class="sec-title">היי, אנחנו<br/><span class="accent">שיר ודורין</span></h2>
+      <p>2 מפתחות תוכנה שהפכו את האהבה שלהן לדיגיטל לעסק שמעניק לבעלי עסקים את הדף שהם תמיד רצו – כזה שמרשים, ממיר ומספר את הסיפור האמיתי שלהם.</p>
+      <p>אנחנו מאמינות שכל עסק ראוי לנוכחות דיגיטלית שמשדרת יוקרה ומקצועיות. לכן אנחנו נותנות לכל פרויקט את כל הלב שלנו.</p>
+      <div class="about__vals">
+        <div class="av">עיצוב מותאם</div>
+        <div class="av">חשיבה אסטרטגית</div>
+        <div class="av">ליווי אישי</div>
+        <div class="av">תוצאות מוכחות</div>
+      </div>
+      <a href="https://wa.me/972503223622" class="btn btn--accent" target="_blank" rel="noopener noreferrer">נבנה לך דף שמוכר</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="pricing section section--dark" id="pricing">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="sec-label">מה אתם מקבלים</p>
+      <h2 class="sec-title">חבילה אחת. הכל בפנים.</h2>
+      <p class="sec-sub">אנחנו לא מאמינות בהפתעות – מחיר שקוף, תוצאה מלאה</p>
+    </div>
+    <div class="pricing__card">
+      <div class="pricing__badge">הכי פופולרי</div>
+      <div class="pricing__top">
+        <div class="pricing__label">דף נחיתה מקצועי</div>
+        <div class="pricing__prices">
+          <span class="pricing__old">₪799</span>
+          <span class="pricing__new">₪499</span>
+        </div>
+        <p class="pricing__sub">תשלום חד פעמי · ללא דמי תחזוקה חבויים</p>
+        <a href="https://wa.me/972503223622" class="btn btn--accent btn--glow pricing__cta" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          אני רוצה דף נחיתה!
+        </a>
+      </div>
+      <div class="pricing__divider" aria-hidden="true"></div>
+      <ul class="pricing__list">
+        <li><span class="pricing__check">✓</span><span>התאמה מלאה לנייד – נראה מושלם בכל מסך</span></li>
+        <li><span class="pricing__check">✓</span><span>הכנסת הלוגו שלכם לדף</span></li>
+        <li><span class="pricing__check">✓</span><span>עיצוב בצבעי המיתוג שלכם</span></li>
+        <li><span class="pricing__check">✓</span><span>טופס לידים חכם – שם, טלפון, מייל ותיאור פנייה</span></li>
+        <li><span class="pricing__check">✓</span><span>טקסט אודות מותאם לעסק שלכם</span></li>
+        <li><span class="pricing__check">✓</span><span>תמונת פרופיל עסק מקצועית</span></li>
+        <li><span class="pricing__check">✓</span><span>סקשן המלצות מלקוחות אמיתיים</span></li>
+        <li><span class="pricing__check">✓</span><span>העלאת סרטון תדמית לדף</span></li>
+        <li><span class="pricing__check">✓</span><span>סקשן שירותי העסק – מה אתם מציעים</span></li>
+        <li><span class="pricing__check">✓</span><span>חיבור לווטסאפ ורשתות חברתיות</span></li>
+        <li><span class="pricing__check">✓</span><span>תפריט ניווט עליון מקצועי ונקי</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services section section--dark" id="services">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="sec-label">מה אנחנו עושות</p>
+      <h2 class="sec-title">השירותים שלנו</h2>
+      <p class="sec-sub">כל שירות נבנה כדי להוביל אתכם מנקודת ההתחלה ועד לתוצאה שרציתם</p>
+    </div>
+    <div class="srv-grid">
+      <article class="srv-card">
+        <div class="srv-card__glow" aria-hidden="true"></div>
+        <div class="srv-num" aria-hidden="true">01</div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 48 48" fill="none" width="42" height="42"><rect x="4" y="8" width="40" height="28" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 44h16M24 36v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>עיצוב דף נחיתה מותאם</h3>
+        <p>לא תבניות, לא copy-paste. כל דף שאנחנו בונות הוא ייחודי ומותאם לעסק, לקהל ולמטרות שלכם בדיוק.</p>
+        <span class="srv-arrow" aria-hidden="true">←</span>
+      </article>
+      <article class="srv-card">
+        <div class="srv-card__glow" aria-hidden="true"></div>
+        <div class="srv-num" aria-hidden="true">02</div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 48 48" fill="none" width="42" height="42"><circle cx="24" cy="18" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>אסטרטגיה וחשיבת UX</h3>
+        <p>לפני שאנחנו מעצבות, אנחנו חושבות. מי הלקוח האידיאלי? מה מניע אותו? איך בונים מסע שמוביל אותו לכפתור?</p>
+        <span class="srv-arrow" aria-hidden="true">←</span>
+      </article>
+      <article class="srv-card">
+        <div class="srv-card__glow" aria-hidden="true"></div>
+        <div class="srv-num" aria-hidden="true">03</div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 48 48" fill="none" width="42" height="42"><path d="M8 12l8 8-8 8M20 28h20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>תהליך ליווי מלא</h3>
+        <p>מהפגישה הראשונה ועד לרגע שהדף עולה לאוויר – ומעבר לכך. אנחנו לא נעלמות אחרי ה-delivery.</p>
+        <span class="srv-arrow" aria-hidden="true">←</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section class="portfolio section" id="portfolio">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="sec-label">עבודות נבחרות</p>
+      <h2 class="sec-title">תיק העבודות שלנו</h2>
+      <p class="sec-sub">כל פרויקט הוא סיפור. הנה כמה מהסיפורים שאנחנו הכי גאות בהם</p>
+    </div>
+    <div class="port-grid">
+
+      <!-- ════════════════════════════════════════
+           PROJECT 1 – שחף בן בסט
+           HOW TO ADD IMAGE:
+           החליפי את התוכן של .port-mockup-img
+           בתמונה שלכן כך:
+           <img src="images/shahaf-mockup.png" alt="...">
+           התמונה צריכה להיות בגודל ~900×600px
+           (mockup של מחשב+טלפון כמו ב-ronizaken.com)
+      ════════════════════════════════════════ -->
+      <article class="port-card port-card--full">
+        <div class="port-mockup-wrap">
+          <div class="port-mockup-img port-mockup-img--1">
+            <img src="images/shahaf-mockup.png" alt="אשת חייל – קורס דיגיטלי אוכל" />
+          </div>
+          <div class="port-mockup-glow port-mockup-glow--teal" aria-hidden="true"></div>
+        </div>
+        <div class="port-info">
+          <span class="port-tag">קורסים דיגיטליים</span>
+          <h3>אשת חייל</h3>
+          <p>קורס דיגיטלי אוכל – דף שמעורר תיאבון, טקסט שמוכר ומבנה שמוביל כל גולש ישר לכפתור הרכישה.</p>
+          <a href="https://shahafbenbasat.co.il/" target="_blank" rel="noopener noreferrer" class="port-link">לצפייה בפרויקט ←</a>
+        </div>
+      </article>
+
+      <!-- ════════════════════════════════════════
+           PROJECT 2 – PAZ OF SHOR
+           HOW TO ADD IMAGE:
+           החליפי את תוכן .port-mockup-img--2
+           ב: <img src="images/paz-mockup.png" alt="...">
+      ════════════════════════════════════════ -->
+      <article class="port-card">
+        <div class="port-mockup-wrap">
+          <div class="port-mockup-img port-mockup-img--2">
+            <img src="images/paz-mockup.png" alt="PAZ OF SHOR – יועץ בטיחות" />
+          </div>
+          <div class="port-mockup-glow port-mockup-glow--purple" aria-hidden="true"></div>
+        </div>
+        <div class="port-info">
+          <span class="port-tag">ייעוץ מקצועי</span>
+          <h3>PAZ OF SHOR</h3>
+          <p>דף נחיתה ליועץ בטיחות בכיר – משדר סמכות ואמינות מהשנייה הראשונה, כדי שכל עסק שמגיע ידע: הוא בידיים הנכונות.</p>
+          <a href="https://paz-of-shor.netlify.app/" target="_blank" rel="noopener noreferrer" class="port-link">לצפייה בפרויקט ←</a>
+        </div>
+      </article>
+
+      <!-- ════════════════════════════════════════
+           PROJECT 3 – Eden Nails
+           HOW TO ADD IMAGE:
+           החליפי את תוכן .port-mockup-img--3
+           ב: <img src="images/eden-mockup.png" alt="...">
+      ════════════════════════════════════════ -->
+      <article class="port-card">
+        <div class="port-mockup-wrap">
+          <div class="port-mockup-img port-mockup-img--3">
+            <img src="images/eden-mockup.png" alt="Eden Nails – מניקוריסטית ובונת ציפורניים" />
+          </div>
+          <div class="port-mockup-glow port-mockup-glow--eden" aria-hidden="true"></div>
+        </div>
+        <div class="port-info">
+          <span class="port-tag">יופי וטיפוח</span>
+          <h3>Eden Nails</h3>
+          <p>דף נחיתה למניקוריסטית ובונת ציפורניים – אסתטיקה שמדברת בעד עצמה, חוויה שגורמת ללקוחות להרגיש את התשוקה לעבודה עוד לפני שהגיעו לסטודיו.</p>
+          <a href="https://eden-nails.netlify.app/" target="_blank" rel="noopener noreferrer" class="port-link">לצפייה בפרויקט ←</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testi section section--dark" id="testimonials">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="sec-label">מה הלקוחות אומרים</p>
+      <h2 class="sec-title">הם כבר בפנים</h2>
+    </div>
+    <div class="testi-grid">
+      <blockquote class="tc">
+        <div class="tc__stars">★★★★★</div>
+        <p>"שיר ודורין נתנו לי תחושה שאני הלקוחה היחידה שלהן. הן הקשיבו לכל פרט, הבינו בדיוק מה אני צריכה – והתוצאה? דף שאני מתאהבת בו מחדש כל פעם שאני פותחת אותו."</p>
+        <footer>
+          <div class="tc__av">ש</div>
+          <div><cite>אשת חייל</cite><span>קורס דיגיטלי אוכל</span></div>
+        </footer>
+      </blockquote>
+      <blockquote class="tc tc--feat">
+        <div class="tc__stars">★★★★★</div>
+        <p>"חיפשתי מישהי שתבין את העסק שלי לעומק – ולא רק תעשה אתר יפה. קיבלתי את שניהם. הדף שלי נראה כמו של חברה גדולה, ואני עסק קטן. זה שינה הכל."</p>
+        <footer>
+          <div class="tc__av">ע</div>
+          <div><cite>עדן, נייל ארטיסט</cite><span>Eden Nails</span></div>
+        </footer>
+      </blockquote>
+      <blockquote class="tc">
+        <div class="tc__stars">★★★★★</div>
+        <p>"הבנות של WebRise ממש הבינו מה אני צריך. תהליך עבודה מסודר, תקשורת מצוינת ותוצאה שמדברת בעד עצמה. ממליץ בחום מלא."</p>
+        <footer>
+          <div class="tc__av">י</div>
+          <div><cite>יורם שור כהן</cite><span>PAZ OF SHOR</span></div>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact section" id="contact">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="sec-label">רוצה דף נחיתה? דברי איתנו</p>
+      <h2 class="sec-title">מוכנים להתחיל?</h2>
+      <p class="sec-sub">ספרו לנו בכמה מילים על הפרויקט שלכם ונחזור אליכם תוך 24 שעות</p>
+    </div>
+    <div class="contact__inner">
+      <div class="contact__side">
+        <p class="contact__side-lbl">מעדיפים לדבר ישירות?</p>
+        <a href="https://wa.me/972503223622" class="c-btn-wa" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp – 050-322-3622
+        </a>
+        <a href="https://www.instagram.com/webriseapp?igsh=MTY3ZHJwNndsMXNmZQ%3D%3D" class="c-btn-ig" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          @webrise
+        </a>
+        <div class="contact__us-card">
+          <div class="contact__us-logo">
+            <span class="contact__us-logo-text">W<span>R</span></span>
+          </div>
+          <div>
+            <p>שיר ודורין</p>
+            <span>זמינות לכם</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact__form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="fg">
+            <label for="cName">שם מלא *</label>
+            <input type="text" id="cName" name="name" placeholder="ישראל ישראלי" required autocomplete="name" />
+          </div>
+          <div class="fg">
+            <label for="cPhone">טלפון *</label>
+            <input type="tel" id="cPhone" name="phone" placeholder="050-0000000" required autocomplete="tel" />
+          </div>
+        </div>
+        <div class="fg">
+          <label for="cMsg">ספרו לנו על הפרויקט</label>
+          <textarea id="cMsg" name="message" rows="4" placeholder="תחום העסק, מה אתם מחפשים..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--accent btn--full btn--glow">שלחו הודעה</button>
+        <div id="formOk" class="form-ok" role="alert" aria-live="polite" aria-hidden="true">
+          <span class="form-ok__icon">✓</span>
+          <div>
+            <strong>נשלחה ההודעה בהצלחה!</strong>
+            <p>ניצור איתך קשר בקרוב</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<!-- ══ PRIVACY MODAL ══ -->
+<div class="modal" id="modalPrivacy" role="dialog" aria-modal="true" aria-labelledby="modalPrivacyTitle" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__box">
+    <button class="modal__close" data-close-modal aria-label="סגור">✕</button>
+    <div class="modal__content">
+      <h2 id="modalPrivacyTitle">מדיניות פרטיות</h2>
+      <p class="modal__updated">עדכון אחרון: מרץ 2026</p>
+      <h3>כללי</h3>
+      <p>אתר זה מופעל על ידי WebRise. השימוש באתר כפוף למדיניות פרטיות זו.</p>
+      <h3>מידע שנאסף</h3>
+      <p>אנחנו אוספות שם, טלפון ומידע שנשלח בטופס יצירת הקשר, וכן מידע טכני לשיפור חווית המשתמש.</p>
+      <h3>שימוש במידע</h3>
+      <p>המידע ישמש למתן מענה לפניות ולשיפור השירות בלבד. לא נמכור ולא נעביר מידע אישי לצדדים שלישיים ללא הסכמתכם.</p>
+      <h3>קישורים חיצוניים</h3>
+      <p>האתר עשוי לכלול קישורים לאתרים של צדדים שלישיים (WhatsApp, Instagram, אתרי לקוחות). אין לנו שליטה עליהם ואיננו אחראיות לתכניהם.</p>
+      <h3>יצירת קשר</h3>
+      <p>לשאלות בנוגע למדיניות: <a href="https://wa.me/972503223622" target="_blank">WhatsApp 050-322-3622</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TERMS MODAL ══ -->
+<div class="modal" id="modalTerms" role="dialog" aria-modal="true" aria-labelledby="modalTermsTitle" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__box">
+    <button class="modal__close" data-close-modal aria-label="סגור">✕</button>
+    <div class="modal__content">
+      <h2 id="modalTermsTitle">תנאי שימוש</h2>
+      <p class="modal__updated">עדכון אחרון: מרץ 2026</p>
+      <h3>1. כללי והסכמה</h3>
+      <p>אתר זה מופעל על ידי WebRise. השימוש באתר, לרבות עיון בתכניו ויצירת קשר, כפוף לתנאים אלה. אם אינך מסכימ/ה – נא להימנע משימוש.</p>
+      <h3>2. שימוש באתר</h3>
+      <p>מותר להשתמש באתר לצרכים פרטיים ועסקיים חוקיים בלבד. אין להעתיק, לשכפל או להפיץ תכנים ללא אישור מראש ובכתב.</p>
+      <h3>3. קניין רוחני</h3>
+      <p>כלל זכויות הקניין הרוחני באתר – עיצוב, טקסטים, גרפיקה ולוגו – שייכים ל-WebRise ומוגנים על פי דין.</p>
+      <h3>4. תכנים שיווקיים ותוצאות</h3>
+      <p>נתוני המרות ושביעות רצון מתייחסים למקרים מסוימים ואינם מהווים התחייבות לתוצאה זהה. תוצאות תלויות בגורמים רבים הקשורים לעסק הלקוח.</p>
+      <h3>5. יצירת קשר והתקשרות</h3>
+      <p>פנייה דרך טופס או WhatsApp אינה יוצרת התקשרות מחייבת, אלא אם סוכם אחרת בכתב.</p>
+      <h3>6. אחריות מוגבלת</h3>
+      <p>האתר מסופק "כמות שהוא". במידה המרבית המותרת בדין, לא נישא באחריות לנזקים עקיפים הנובעים משימוש באתר.</p>
+      <h3>7. דין וסמכות שיפוט</h3>
+      <p>על תנאים אלה יחולו דיני מדינת ישראל. סמכות שיפוט ייחודית – בתי המשפט במחוז תל אביב-יפו.</p>
+      <h3>יצירת קשר</h3>
+      <p><a href="https://wa.me/972503223622" target="_blank">WhatsApp 050-322-3622</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <div class="footer__logo">Web<span>Rise</span></div>
+      <p>הדף שלכם. הסיפור שלכם. התוצאות שלכם.</p>
+      <div class="footer__soc">
+        <a href="https://wa.me/972503223622" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/webriseapp?igsh=MTY3ZHJwNndsMXNmZQ%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+    <nav aria-label="ניווט תחתית">
+      <h3>ניווט</h3>
+      <ul>
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#pricing">מחירים</a></li>
+        <li><a href="#portfolio">עבודות</a></li>
+        <li><a href="#testimonials">לקוחות</a></li>
+        <li><a href="#contact">יצירת קשר</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="משפטי">
+      <h3>משפטי</h3>
+      <ul>
+        <li><a href="#" class="open-modal" data-modal="modalPrivacy">מדיניות פרטיות</a></li>
+        <li><a href="#" class="open-modal" data-modal="modalTerms">תנאי שימוש</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer__bottom">
+    <p>© <span id="year"></span> WebRise. כל הזכויות שמורות.</p>
+    <p>נבנה על ידי WebRise</p>
+  </div>
+</footer>
+
+<!-- Floating WA -->
+<a href="https://wa.me/972503223622" class="wa-fab" target="_blank" rel="noopener noreferrer" aria-label="וואטסאפ WebRise">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- A11Y -->
+<div class="a11y">
+  <button id="a11yBtn" aria-label="נגישות" aria-expanded="false">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a2 2 0 110 4 2 2 0 010-4zm-1 14H9a1 1 0 010-2h2v-3H9a1 1 0 010-2h3a1 1 0 011 1v4h1a1 1 0 010 2h-3z"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+  </button>
+  <div class="a11y__panel" id="a11yPanel" aria-hidden="true">
+    <h4>נגישות</h4>
+    <button id="a11yC" aria-pressed="false">ניגודיות גבוהה</button>
+    <button id="a11yF" aria-pressed="false">הגדלת טקסט</button>
+  </div>
+</div>
+
+</body>
+</html>
